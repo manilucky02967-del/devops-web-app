@@ -1,0 +1,19 @@
+name: DevOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install
+
+      - run: node app.js & sleep 5
+
+      - run: docker build -t devops-web-app .
